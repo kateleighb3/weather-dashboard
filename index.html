@@ -26,7 +26,7 @@
 </head>
 <body>
     <header>
-        <div class="container-fluid mb-3 wdheader" style="border:solid green">
+        <div class="container-fluid mb-3 wdheader">
             <h1>Weather Dashboard</h1>
           </div>
     </header>
@@ -35,12 +35,12 @@
         <div class="row">
             <!-- col 1 -->
             <div class="col-4">
-                <div class=" headerSearch row mx-3">
+                <div class=" search_box row mx-3">
                     <h3>Search for a City:</h3>
                 </div>                
             <!-- search box -->
                   <div class="input-group mb-3">
-                    <input id="searchCity" type="text" class="form-control" placeholder="Enter a city" aria-label="Enter a city">
+                    <input id="user_input" type="text" class="form-control" placeholder="Enter a city" aria-label="Enter a city">
                     <div class="input-group-append">
                         <button class="btn btn-primary" type="button" id="search_button">
                             <i class="fas fa-search"></i>
@@ -48,13 +48,18 @@
                     </div>
                 </div>
 
-            </div>
-            
-            <!-- col 2 -->
-            <div class="col-8">col-8</div>
-          </div>
-    
+                <!-- city search history -->
 
+                <div class="list-group row m-3" id="city_search_history_list"></div>
+
+            </div>
+
+            <!-- col 2 -->
+            <div class="col-8">
+                <div class="row m-3" style="border: solid green" id="city_main"></div>
+                <div class=" row m-3" style="border:solid red" id="city_forecast"></div>
+            </div>
+          </div>
     </main>
 
     <!-- jQuery Link-->
