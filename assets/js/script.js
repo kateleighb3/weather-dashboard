@@ -102,10 +102,10 @@ function callRequestedCity(city) {
             console.log("five...", fiveData);
 
         const dayOne = dayjs(fiveData.list[0].dt_txt).format('ddd, MMMM D');
-        const dayTwo = dayjs(fiveData.list[2].dt_txt).format('ddd, MMMM D');
-        const dayThree = dayjs(fiveData.list[10].dt_txt).format('ddd, MMMM D');
-        const dayFour = dayjs(fiveData.list[18].dt_txt).format('ddd, MMMM D');
-        const dayFive = dayjs(fiveData.list[26].dt_txt).format('ddd, MMMM D');
+        const dayTwo = dayjs(fiveData.list[10].dt_txt).format('ddd, MMMM D');
+        const dayThree = dayjs(fiveData.list[18].dt_txt).format('ddd, MMMM D');
+        const dayFour = dayjs(fiveData.list[26].dt_txt).format('ddd, MMMM D');
+        const dayFive = dayjs(fiveData.list[32].dt_txt).format('ddd, MMMM D');
         //const dayOneDate = document.querySelector('.day_one_date');
 
         const forecastDayOne = document.getElementById('forecast_day1');
@@ -120,24 +120,24 @@ function callRequestedCity(city) {
                                     "<p>Humidity: " + fiveData.list[0].main.humidity + "% </p>";
         
         forecastDayTwo.innerHTML = "<p>" + dayTwo + "</p>" +
-                                    "<img src= https://openweathermap.org/img/w/" + fiveData.list[2].weather[0].icon + ".png>" +
-                                    "<p>Temp: " + fiveData.list[2].main.temp + " F </p>" +
-                                    "<p>Humidity: " + fiveData.list[2].main.humidity + "% </p>";
-
-        forecastDayThree.innerHTML = "<p>" + dayThree + "</p>" +
                                     "<img src= https://openweathermap.org/img/w/" + fiveData.list[10].weather[0].icon + ".png>" +
                                     "<p>Temp: " + fiveData.list[10].main.temp + " F </p>" +
                                     "<p>Humidity: " + fiveData.list[10].main.humidity + "% </p>";
 
-        forecastDayFour.innerHTML = "<p>" + dayFour + "</p>" +
+        forecastDayThree.innerHTML = "<p>" + dayThree + "</p>" +
                                     "<img src= https://openweathermap.org/img/w/" + fiveData.list[18].weather[0].icon + ".png>" +
                                     "<p>Temp: " + fiveData.list[18].main.temp + " F </p>" +
                                     "<p>Humidity: " + fiveData.list[18].main.humidity + "% </p>";
-      
-        forecastDayFive.innerHTML = "<p>" + dayFive + "</p>" +
+
+        forecastDayFour.innerHTML = "<p>" + dayFour + "</p>" +
                                     "<img src= https://openweathermap.org/img/w/" + fiveData.list[26].weather[0].icon + ".png>" +
                                     "<p>Temp: " + fiveData.list[26].main.temp + " F </p>" +
                                     "<p>Humidity: " + fiveData.list[26].main.humidity + "% </p>";
+      
+        forecastDayFive.innerHTML = "<p>" + dayFive + "</p>" +
+                                    "<img src= https://openweathermap.org/img/w/" + fiveData.list[32].weather[0].icon + ".png>" +
+                                    "<p>Temp: " + fiveData.list[32].main.temp + " F </p>" +
+                                    "<p>Humidity: " + fiveData.list[32].main.humidity + "% </p>";
        // dayOneDate.textContent = dayOne;
 
 
