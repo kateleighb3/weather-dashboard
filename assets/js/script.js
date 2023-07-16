@@ -6,23 +6,45 @@ const cityMain = document.getElementById('city_main');
 const cityForecast = document.getElementById('city_forecast');
 const citySearchHistoryList = document.getElementById('city_search_history_list');
 
+
+
 // let citySearchHistory = JSON.parse(localStorage.getItem('city_search_history_list')) || []
 
+function loadPage() {
+    cityForecast.style.display="none";
+}
+
+window.onload = loadPage()
+
+// when search button clicked:
 searchBtn.addEventListener('click', function(event) {
     event.preventDefault();
 
-let cityAskedFor = userInput.value
+const clear = function(element){
+        element.innerHTML = "";
+    }
 
-localStorage.setItem("requestedCity", JSON.stringify(cityAskedFor));
-callRequestedCity(cityAskedFor)
+clear(cityMain);
+cityForecast.style.display="flex";
+
+let cityAskedFor = userInput.value;
+
+//localStorage.setItem("requestedCity", JSON.stringify(cityAskedFor));
+callRequestedCity(cityAskedFor);
+displayHistory(cityAskedFor);
 
 })
 
-function displayHistory(){
-    let citySearchHistory = JSON.parse(localStorage.getItem("requestedCity"));
-    citySearchHistoryList.innerHTML = cityAskedFor;
-}
 
+function displayHistory(){
+    
+}
+/*function displayHistory(cityAskedFor){
+    localStorage.setItem('requestedCity', cityAskedFor);
+    //let citySearchHistory = JSON.parse(localStorage.getItem("requestedCity"));
+    //citySearchHistoryList.innerHTML = cityAskedFor;
+}
+*/
 function callRequestedCity(city) {
     fetch('https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + API_KEY + '&units=imperial')
     .then((response) => response.json())
@@ -53,8 +75,48 @@ function callRequestedCity(city) {
         .then(fiveData => {
             console.log("five...", fiveData);
 
+        const dayOne = dayjs(fiveData.list[0].dt_txt).format('ddd, MMMM D');
+        const dayTwo = dayjs(fiveData.list[2].dt_txt).format('ddd, MMMM D');
+        const dayThree = dayjs(fiveData.list[10].dt_txt).format('ddd, MMMM D');
+        const dayFour = dayjs(fiveData.list[18].dt_txt).format('ddd, MMMM D');
+        const dayFive = dayjs(fiveData.list[26].dt_txt).format('ddd, MMMM D');
+        //const dayOneDate = document.querySelector('.day_one_date');
 
-            
+        const forecastDayOne = document.getElementById('forecast_day1');
+        const forecastDayTwo = document.getElementById('forecast_day2');
+        const forecastDayThree = document.getElementById('forecast_day3');
+        const forecastDayFour = document.getElementById('forecast_day4');
+        const forecastDayFive = document.getElementById('forecast_day5');
+
+        forecastDayOne.innerHTML = "<p>" + dayOne + "</p>" +
+                                    "<img src= https://openweathermap.org/img/w/" + fiveData.list[0].weather[0].icon + ".png>" +
+                                    "<p>Temp: " + fiveData.list[0].main.temp + " F </p>" +
+                                    "<p>Humidity: " + fiveData.list[0].main.humidity + "% </p>";
+        
+        forecastDayTwo.innerHTML = "<p>" + dayTwo + "</p>" +
+                                    "<img src= https://openweathermap.org/img/w/" + fiveData.list[2].weather[0].icon + ".png>" +
+                                    "<p>Temp: " + fiveData.list[2].main.temp + " F </p>" +
+                                    "<p>Humidity: " + fiveData.list[2].main.humidity + "% </p>";
+
+        forecastDayThree.innerHTML = "<p>" + dayThree + "</p>" +
+                                    "<img src= https://openweathermap.org/img/w/" + fiveData.list[10].weather[0].icon + ".png>" +
+                                    "<p>Temp: " + fiveData.list[10].main.temp + " F </p>" +
+                                    "<p>Humidity: " + fiveData.list[10].main.humidity + "% </p>";
+
+        forecastDayFour.innerHTML = "<p>" + dayFour + "</p>" +
+                                    "<img src= https://openweathermap.org/img/w/" + fiveData.list[18].weather[0].icon + ".png>" +
+                                    "<p>Temp: " + fiveData.list[18].main.temp + " F </p>" +
+                                    "<p>Humidity: " + fiveData.list[18].main.humidity + "% </p>";
+      
+        forecastDayFive.innerHTML = "<p>" + dayFive + "</p>" +
+                                    "<img src= https://openweathermap.org/img/w/" + fiveData.list[26].weather[0].icon + ".png>" +
+                                    "<p>Temp: " + fiveData.list[26].main.temp + " F </p>" +
+                                    "<p>Humidity: " + fiveData.list[26].main.humidity + "% </p>";
+       // dayOneDate.textContent = dayOne;
+
+
+       
+        
         })
 
 
@@ -64,6 +126,16 @@ function callRequestedCity(city) {
 
 
 }
+
+
+
+
+ /* const dayOneI = "https://openweathermap.org/img/w/" + fiveData.list[0].weather[0].icon + ".png";
+        
+        const dayOneIcon = document.querySelector('.day_one_icon')
+        //const dayOneTemp =
+        //const dayOneHumidity=
+        */
 
 /* function fiveDayForecast(city) {
     fetch('https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + API_KEY + '&units=imperial')

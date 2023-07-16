@@ -50,14 +50,57 @@
 
                 <!-- city search history -->
 
-                <div class="list-group row m-3" id="city_search_history_list"></div>
+                <div class="list-group row m-3">
+                    <ul id="city_search_history_list"></ul>
+                </div>
 
             </div>
 
             <!-- col 2 -->
             <div class="col-8">
-                <div class="row m-3" style="border: solid green" id="city_main"></div>
-                <div class=" row m-3" style="border:solid red" id="city_forecast"></div>
+                <!-- Main City Info -->
+                <div class="row m-3" id="city_main"></div>
+                <!-- 5 Day Forecast -->
+                <div class=" row m-3" id="city_forecast">
+                    <!-- day 1 -->
+                    <div class="col">
+                        <div class="card forecast_day">
+                            <div class="card-body bg-primary" id="forecast_day1">
+                            </div>
+                        </div>
+                    </div>
+                      <!-- day 2 -->
+                      <div class="col">
+                        <div class="card forecast_day">
+                            <div class="card-body bg-primary" id="forecast_day2">
+                            </div>
+                        </div>
+                      </div>
+
+                      <!-- day 3 -->
+                      <div class="col">
+                        <div class="card forecast_day">
+                            <div class="card-body bg-primary" id="forecast_day3">
+                            </div>
+                        </div>
+                      </div>
+                    <!-- day 4 -->
+                      <div class="col">
+                        <div class="card forecast_day">
+                            <div class="card-body bg-primary" id="forecast_day4">
+                            </div>
+                        </div>
+                      </div>
+                <!-- day 5 -->
+                      <div class="col">
+                        <div class="card forecast_day">
+                            <div class="card-body bg-primary" id="forecast_day5">
+                            </div>
+                        </div>
+                      </div>
+                
+                
+                </div>
             </div>
           </div>
     </main>
