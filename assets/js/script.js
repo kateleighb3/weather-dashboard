@@ -6,7 +6,7 @@ const cityMain = document.getElementById('city_main');
 const cityForecast = document.getElementById('city_forecast');
 const citySearchHistoryList = document.getElementById('city_search_history_list');
 
-
+// const cityName = JSON.parse(localStorage.getItem('requestedCity'));
 
 // let citySearchHistory = JSON.parse(localStorage.getItem('city_search_history_list')) || []
 
@@ -31,14 +31,39 @@ let cityAskedFor = userInput.value;
 
 //localStorage.setItem("requestedCity", JSON.stringify(cityAskedFor));
 callRequestedCity(cityAskedFor);
-displayHistory(cityAskedFor);
+storeHistory(cityAskedFor);
+renderLastCity();
 
 })
 
 
-function displayHistory(){
-    
+function storeHistory(cityReq){
+    localStorage.setItem("requestedCity", JSON.stringify(cityReq));
+
+
+    /*for (let i = 0; i < localStorage.length; i++) {
+        citySearchHistoryList.innerHTML=
+    } */
+
+   
+    /* var currentCityText = userInput.value.trim();
+
+    if (currentCityText ==="") {
+        return;
+    }
+
+    currentCity.push(currentCityText);
+    userInput.value = "";
+
+    storeHistory();
+    renderHistory();*/
 }
+function renderLastCity() {
+    let lastCity = JSON.parse(localStorage.getItem("requestedCity"));
+    citySearchHistoryList.textContent = lastCity;
+}    
+
+
 /*function displayHistory(cityAskedFor){
     localStorage.setItem('requestedCity', cityAskedFor);
     //let citySearchHistory = JSON.parse(localStorage.getItem("requestedCity"));

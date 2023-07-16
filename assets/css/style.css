@@ -12,3 +12,12 @@
     padding: 20px;
 }
 
+.card-body, .bg-primary {
+    border-radius: 5px;
+}
+
+header, .forecast {
+text-align: center;
+font-size: 26px;
+font-weight: 700;
+}
